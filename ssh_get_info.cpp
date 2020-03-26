@@ -59,14 +59,3 @@ ssh_session establish_session(std::string username, std::string password, std::s
 
     return ssh_session;
 }
-
-int get_ram_usage(ssh_session session){
-    std::string str = send_command(session, "vmstat -s | egrep 'used memory' | cut -d 'K' -f 1");
-    str.erase(std::remove_if(str.begin(), str.end(), isspace), str.end());
-    return std::stoi(str);
-}
-int get_ram_total(ssh_session session){
-    std::string str = send_command(session, "vmstat -s | egrep 'total memory' | cut -d 'K' -f 1");
-    str.erase(std::remove_if(str.begin(), str.end(), isspace), str.end());
-    return std::stoi(str);
-}

@@ -28,7 +28,8 @@ add_executable(GamingMonitor
 )
 
 add_subdirectory(libssh/)
+add_subdirectory(psutil-cpp/)
 
-target_link_libraries(GamingMonitor ssh Qt5::Widgets)
+target_link_libraries(GamingMonitor PRIVATE ssh psutil-cpp Qt5::Widgets)
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
